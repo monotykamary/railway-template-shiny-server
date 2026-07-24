@@ -1,6 +1,7 @@
 library(shiny)
 
 ui <- fluidPage(
+  title = "Shiny Server on Railway",
   tags$head(
     tags$style(HTML("
       body { background: #f7f9fc; }

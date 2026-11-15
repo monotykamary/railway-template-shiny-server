@@ -32,6 +32,12 @@ Hosting Shiny Server turns R analyses, visualizations, and data tools into brows
 
 The startup wrapper validates Railway's `PORT`, writes it into the Shiny Server configuration, and then launches the upstream Rocker init system. Shiny application logs are streamed to stdout. The service is stateless by default and does not require a database or volume.
 
+## Runtime security and validation scope
+
+The pinned Rocker image runs the Shiny Server master as root and configures application workers as `shiny`. Live process inspection for this release confirmed master UID 0 and an active R worker at UID/GID 996. This is not a rootless-container claim. The upstream master-root warning remains visible in startup logs; it must not be confused with proof that application workers run as root.
+
+Real-browser HTTPS/WebSocket checks changed the sample histogram from 5 to 40 bins and verified different rendered image bytes before and after the runtime update and exact-version redeployment. The sample itself is stateless; add and validate appropriate storage for an application that needs persistence.
+
 ### Why Deploy Shiny Server on Railway?
 
 Railway provides source builds, HTTPS networking, deployment health checks, logs, and restart management around Shiny Server. This keeps the template small while leaving the application code and R package selection fully customizable in GitHub.

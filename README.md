@@ -2,7 +2,7 @@
 
 [![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/shiny-server?referralCode=ZqgrJ0)
 
-A production-ready Railway template for hosting interactive R applications with the open-source Shiny Server. It uses the maintained digest-pinned `rocker/shiny:4.6.2` image and includes a reactive sample application.
+A single-service Railway template for hosting interactive R applications with the open-source Shiny Server. It uses the maintained digest-pinned `rocker/shiny:4.6.2` image and includes a reactive sample application.
 
 ## Deploy
 
@@ -48,6 +48,12 @@ Open <http://localhost:3838>.
 ## Architecture
 
 The template contains one stateless Shiny Server service. Add a Railway volume only if your application writes durable local files. For shared or relational state, connect a database or object-storage bucket instead.
+
+## Runtime security and validation scope
+
+The pinned Rocker image runs the Shiny Server master as root and configures application workers as `shiny`. Live process inspection for this release confirmed master UID 0 and an active R worker at UID/GID 996. This is not a rootless-container claim. The upstream master-root warning remains visible in startup logs; it must not be confused with proof that application workers run as root.
+
+Real-browser HTTPS/WebSocket checks changed the sample histogram from 5 to 40 bins and verified different rendered image bytes before and after the runtime update and exact-version redeployment. The sample itself is stateless; add and validate appropriate storage for an application that needs persistence.
 
 ## License
 

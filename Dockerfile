@@ -1,4 +1,4 @@
-FROM rocker/shiny:4.6.1@sha256:ba09abb11d838e27a325c869f577be346dba3f8415f8435fbe042b3b5697837b
+FROM rocker/shiny:4.6.2@sha256:9b5e77b37205f826115c3a832323b9a9a20d624376ee51323bba149abe1a2a3d
 
 COPY shiny-server.conf /etc/shiny-server/shiny-server.conf
 COPY start-shiny-server.sh /usr/local/bin/start-shiny-server

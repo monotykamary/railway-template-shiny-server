@@ -2,7 +2,7 @@
 
 [![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/shiny-server?referralCode=ZqgrJ0)
 
-A production-ready Railway template for hosting interactive R applications with the open-source Shiny Server. It uses the maintained `rocker/shiny:4.6.1` image and includes a reactive sample application.
+A production-ready Railway template for hosting interactive R applications with the open-source Shiny Server. It uses the maintained digest-pinned `rocker/shiny:4.6.2` image and includes a reactive sample application.
 
 ## Deploy
 

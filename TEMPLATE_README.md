@@ -16,9 +16,9 @@ Hosting Shiny Server turns R analyses, visualizations, and data tools into brows
 
 ## Dependencies for Shiny Server Hosting
 
-- R 4.6.1
+- R 4.6.2
 - Shiny and Shiny Server Open Source
-- The maintained `rocker/shiny:4.6.1` container image
+- The maintained, digest-pinned `rocker/shiny:4.6.2` container image
 - Docker for reproducible application packaging
 
 ### Deployment Dependencies
